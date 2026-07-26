@@ -38,3 +38,19 @@ The 0.4.1 source compiled against all supported installations:
 The root `manifest.json` targets the latest supported version, Beat Saber
 1.44.1. The `manifests` directory contains dependency sets used for the older
 tested versions. Select one with the `PluginManifest` MSBuild property.
+
+## Release asset names
+
+Every published archive includes both the plugin version and its exact target
+game version:
+
+| Target game | Asset filename |
+| --- | --- |
+| Beat Saber 1.39.1 | `AutoPlay-Beat-Saber-v0.4.1-bs1.39.1.zip` |
+| Beat Saber 1.40.7 | `AutoPlay-Beat-Saber-v0.4.1-bs1.40.7.zip` |
+| Beat Saber 1.40.8 | `AutoPlay-Beat-Saber-v0.4.1-bs1.40.8.zip` |
+| Beat Saber 1.43.0 | `AutoPlay-Beat-Saber-v0.4.1-bs1.43.0.zip` |
+| Beat Saber 1.44.1 | `AutoPlay-Beat-Saber-v0.4.1-bs1.44.1.zip` |
+
+Do not infer compatibility from the plugin version alone. The `bsX.Y.Z`
+filename suffix is the authoritative game-version target.

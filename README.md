@@ -8,6 +8,23 @@ and 1.44.1. Equivalent compatibility builds were manually exercised in VR.
 See [COMPATIBILITY.md](COMPATIBILITY.md) for the detailed results and known
 limitations.
 
+## Which file should I download?
+
+Download the ZIP whose filename ends with your exact Beat Saber version.
+Do not install a ZIP built for a different game version.
+
+| Beat Saber version | Plugin release | Release asset |
+| --- | --- | --- |
+| 1.39.1 | v0.4.1 | `AutoPlay-Beat-Saber-v0.4.1-bs1.39.1.zip` |
+| 1.40.7 | v0.4.1 | `AutoPlay-Beat-Saber-v0.4.1-bs1.40.7.zip` |
+| 1.40.8 | v0.4.1 | `AutoPlay-Beat-Saber-v0.4.1-bs1.40.8.zip` |
+| 1.43.0 | v0.4.1 | `AutoPlay-Beat-Saber-v0.4.1-bs1.43.0.zip` |
+| 1.44.1 | v0.4.1 | `AutoPlay-Beat-Saber-v0.4.1-bs1.44.1.zip` |
+| 1.44.2 | Unsupported | No compatible official BSIPA release is available. |
+
+The older `v0.4.0` release asset
+`AutoPlay-Beat-Saber-v0.4.0-bs1.40.8.zip` is for Beat Saber 1.40.8 only.
+
 ## Features
 
 - Plays random local custom maps back-to-back.
@@ -61,8 +78,12 @@ manifest from the `manifests` directory when building an older version.
 
 ## Installation
 
-Extract the release archive into the Beat Saber installation directory. The DLL
-must end up at `Plugins/AutoContinuousPlay.dll`.
+1. Check the game version in BSManager.
+2. Download the matching asset from the GitHub Releases page using the table
+   above.
+3. Extract the archive into that Beat Saber installation directory.
+
+The DLL must end up at `Plugins/AutoContinuousPlay.dll`.
 
 ## Building
 
