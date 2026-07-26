@@ -5,7 +5,8 @@
     <Nullable>disable</Nullable>
     <AssemblyName>AutoContinuousPlay</AssemblyName>
     <RootNamespace>AutoContinuousPlay</RootNamespace>
-    <Version>0.4.0</Version>
+    <Version>0.4.1</Version>
+    <PluginManifest Condition="'$(PluginManifest)' == ''">manifest.json</PluginManifest>
     <Authors>SerkaFox</Authors>
     <Description>Continuous random local-map sessions for Beat Saber.</Description>
     <PackageProjectUrl>https://github.com/SerkaFox/AutoPlay_BeatSaber</PackageProjectUrl>
@@ -14,7 +15,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="manifest.json" />
+    <EmbeddedResource Include="$(PluginManifest)" LogicalName="manifest.json" />
     <EmbeddedResource Include="Assets\icon.png" LogicalName="AutoContinuousPlay.Assets.icon.png" />
     <EmbeddedResource Include="UI\gameplay.bsml" />
     <Reference Include="0Harmony">
@@ -80,6 +81,6 @@
   </ItemGroup>
 
   <Target Name="CopyPluginManifest" AfterTargets="Build">
-    <Copy SourceFiles="manifest.json" DestinationFolder="$(OutputPath)" />
+    <Copy SourceFiles="$(PluginManifest)" DestinationFiles="$(OutputPath)manifest.json" />
   </Target>
 </Project>

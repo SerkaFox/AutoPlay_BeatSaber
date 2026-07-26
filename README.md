@@ -1,7 +1,12 @@
 # AutoPlay Beat Saber
 
-AutoPlay Beat Saber is a BSIPA plugin for Beat Saber 1.40.8 that keeps a Solo
-session moving without requiring the player to select every song manually.
+AutoPlay Beat Saber is a BSIPA plugin that keeps a Solo session moving without
+requiring the player to select every song manually.
+
+The 0.4.1 source builds against Beat Saber 1.39.1, 1.40.7, 1.40.8, 1.43.0,
+and 1.44.1. Equivalent compatibility builds were manually exercised in VR.
+See [COMPATIBILITY.md](COMPATIBILITY.md) for the detailed results and known
+limitations.
 
 ## Features
 
@@ -14,7 +19,7 @@ session moving without requiring the player to select every song manually.
 - Adds a session countdown below SimpleClock.
 - Adds a Skip button to the in-game pause menu.
 - Keeps the normal Menu button available to end the session.
-- In-game interface available in English, Russian, and Spanish.
+- Provides an in-game interface in English, Russian, and Spanish.
 
 ## Usage
 
@@ -51,6 +56,9 @@ available from the `Auto Play` tab inside Solo mode:
 - BS Utils
 - BeatSaberMarkupLanguage
 
+Dependency minimums differ between Beat Saber versions. Use the matching
+manifest from the `manifests` directory when building an older version.
+
 ## Installation
 
 Extract the release archive into the Beat Saber installation directory. The DLL
@@ -58,8 +66,18 @@ must end up at `Plugins/AutoContinuousPlay.dll`.
 
 ## Building
 
+The default manifest targets Beat Saber 1.44.1:
+
 ```powershell
 dotnet build -c Release -p:BeatSaberDir="D:\Path\To\Beat Saber"
+```
+
+To build another tested version, select its manifest:
+
+```powershell
+dotnet build -c Release `
+  -p:BeatSaberDir="D:\Path\To\Beat Saber 1.39.1" `
+  -p:PluginManifest="manifests\1.39.1.json"
 ```
 
 ## License

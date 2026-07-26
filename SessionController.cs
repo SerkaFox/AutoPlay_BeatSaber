@@ -86,13 +86,16 @@ namespace AutoContinuousPlay
                     throw new InvalidOperationException("Active PauseController was not found.");
 
                 var returnController = AccessTools.Field(typeof(PauseController), "_returnToMenuController")
-                    .GetValue(pauseController) as IReturnToMenuController;
+                    ?.GetValue(pauseController);
                 if (returnController == null)
                     throw new InvalidOperationException("ReturnToMenuController was not found.");
 
                 _skipRequested = true;
                 Plugin.Log.Info("Player requested to skip the current map.");
-                returnController.ReturnToMenu();
+                var returnMethod = AccessTools.Method(returnController.GetType(), "ReturnToMenu");
+                if (returnMethod == null)
+                    throw new MissingMethodException(returnController.GetType().FullName, "ReturnToMenu");
+                returnMethod.Invoke(returnController, null);
             }
             catch (Exception ex)
             {

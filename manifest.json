@@ -3,17 +3,17 @@
   "id": "AutoContinuousPlay",
   "name": "AutoPlay Beat Saber",
   "author": "SerkaFox",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "Automatically plays random local songs back-to-back for a configurable session.",
-  "gameVersion": "1.40.8",
+  "gameVersion": "1.44.1",
   "icon": "AutoContinuousPlay.Assets.icon.png",
   "links": {
     "project-source": "https://github.com/SerkaFox/AutoPlay_BeatSaber"
   },
   "dependsOn": {
-    "BSIPA": "^4.3.5",
-    "SongCore": "^3.15.3",
-    "BS Utils": "^1.14.1",
-    "BeatSaberMarkupLanguage": "^1.12.4"
+    "BSIPA": "^4.3.7",
+    "SongCore": "^3.16.0",
+    "BS Utils": "^1.14.3",
+    "BeatSaberMarkupLanguage": "^1.14.2"
   }
 }

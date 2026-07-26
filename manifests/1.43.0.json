@@ -1,0 +1,19 @@
+{
+  "$schema": "https://raw.githubusercontent.com/nike4613/BeatSaber-IPA-Reloaded/master/BSIPA-ModList.json",
+  "id": "AutoContinuousPlay",
+  "name": "AutoPlay Beat Saber",
+  "author": "SerkaFox",
+  "version": "0.4.1",
+  "description": "Automatically plays random local songs back-to-back for a configurable session.",
+  "gameVersion": "1.43.0",
+  "icon": "AutoContinuousPlay.Assets.icon.png",
+  "links": {
+    "project-source": "https://github.com/SerkaFox/AutoPlay_BeatSaber"
+  },
+  "dependsOn": {
+    "BSIPA": "^4.3.7",
+    "SongCore": "^3.16.0",
+    "BS Utils": "^1.14.3",
+    "BeatSaberMarkupLanguage": "^1.14.2"
+  }
+}
