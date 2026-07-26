@@ -1,0 +1,68 @@
+<bg xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="https://monkeymanboy.github.io/BSML-Docs/BSMLSchema.xsd">
+  <scrollable-settings-container>
+    <dropdown-list-setting
+      text="~label-language"
+      value="language"
+      choices="language-options"
+      apply-on-change="true" />
+
+    <toggle-setting
+      text="~label-enabled"
+      value="enabled"
+      apply-on-change="true"
+      hover-hint="~hint-enabled" />
+
+    <slider-setting
+      text="~label-session"
+      value="session-minutes"
+      min="5"
+      max="180"
+      increment="5"
+      apply-on-change="true"
+      show-buttons="true" />
+
+    <slider-setting
+      text="~label-delay"
+      value="delay-seconds"
+      min="0"
+      max="60"
+      increment="1"
+      apply-on-change="true"
+      show-buttons="true" />
+
+    <dropdown-list-setting
+      text="~label-difficulty"
+      value="difficulty"
+      choices="difficulty-options"
+      apply-on-change="true" />
+
+    <slider-setting
+      text="~label-minimum"
+      value="minimum-length"
+      min="0"
+      max="600"
+      increment="15"
+      apply-on-change="true"
+      show-buttons="true" />
+
+    <slider-setting
+      text="~label-maximum"
+      value="maximum-length"
+      min="30"
+      max="900"
+      increment="15"
+      apply-on-change="true"
+      show-buttons="true" />
+
+    <toggle-setting
+      text="~label-restart-failure"
+      value="restart-after-failure"
+      apply-on-change="true" />
+
+    <toggle-setting
+      text="~label-avoid-repeats"
+      value="avoid-repeats"
+      apply-on-change="true" />
+  </scrollable-settings-container>
+</bg>
