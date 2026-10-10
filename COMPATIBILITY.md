@@ -2,9 +2,11 @@
 
 Manual runtime tests were performed on 2026-07-26 using equivalent 0.4.0
 compatibility builds, Steam builds managed by BSManager, SteamVR/OpenXR, and a
-shared library containing 856 custom-map folders. Version 0.4.1 formalizes the
-tested code fixes and version-specific dependency manifests. Its source was
-compiled against all five supported game installations after the changes.
+shared library containing 856 custom-map folders. Version 0.4.2 retains the
+tested compatibility fixes and adds an active-play
+session clock: pause time and inter-song loading time no longer consume the
+configured session. Its source was compiled against all five supported game
+installations after the changes.
 
 | Beat Saber | Result | Tested behavior |
 | --- | --- | --- |
@@ -26,7 +28,7 @@ maps continue to load and play.
 
 ## Build validation
 
-The 0.4.1 source compiled against all supported installations:
+The 0.4.2 source compiled against all supported installations:
 
 - 1.39.1, 1.40.7, and 1.40.8: zero errors and zero warnings.
 - 1.43.0 and 1.44.1: zero errors and one BSML deprecation warning for
@@ -46,11 +48,11 @@ game version:
 
 | Target game | Asset filename |
 | --- | --- |
-| Beat Saber 1.39.1 | `AutoPlay-Beat-Saber-v0.4.1-bs1.39.1.zip` |
-| Beat Saber 1.40.7 | `AutoPlay-Beat-Saber-v0.4.1-bs1.40.7.zip` |
-| Beat Saber 1.40.8 | `AutoPlay-Beat-Saber-v0.4.1-bs1.40.8.zip` |
-| Beat Saber 1.43.0 | `AutoPlay-Beat-Saber-v0.4.1-bs1.43.0.zip` |
-| Beat Saber 1.44.1 | `AutoPlay-Beat-Saber-v0.4.1-bs1.44.1.zip` |
+| Beat Saber 1.39.1 | `AutoPlay-Beat-Saber-v0.4.2-bs1.39.1.zip` |
+| Beat Saber 1.40.7 | `AutoPlay-Beat-Saber-v0.4.2-bs1.40.7.zip` |
+| Beat Saber 1.40.8 | `AutoPlay-Beat-Saber-v0.4.2-bs1.40.8.zip` |
+| Beat Saber 1.43.0 | `AutoPlay-Beat-Saber-v0.4.2-bs1.43.0.zip` |
+| Beat Saber 1.44.1 | `AutoPlay-Beat-Saber-v0.4.2-bs1.44.1.zip` |
 
 Do not infer compatibility from the plugin version alone. The `bsX.Y.Z`
 filename suffix is the authoritative game-version target.
