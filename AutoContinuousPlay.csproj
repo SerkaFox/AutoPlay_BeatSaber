@@ -5,7 +5,7 @@
     <Nullable>disable</Nullable>
     <AssemblyName>AutoContinuousPlay</AssemblyName>
     <RootNamespace>AutoContinuousPlay</RootNamespace>
-    <Version>0.4.1</Version>
+    <Version>0.4.2</Version>
     <PluginManifest Condition="'$(PluginManifest)' == ''">manifest.json</PluginManifest>
     <Authors>SerkaFox</Authors>
     <Description>Continuous random local-map sessions for Beat Saber.</Description>

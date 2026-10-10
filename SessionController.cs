@@ -13,6 +13,9 @@ namespace AutoContinuousPlay
         private static readonly System.Random Random = new System.Random();
         private static readonly Queue<string> RecentLevelIds = new Queue<string>();
         private static DateTime? _sessionStartedAt;
+        private static double _activeElapsedSeconds;
+        private static bool _gameplayClockRunning;
+        private static bool _gameTimeWasRunning;
         private static bool _transitionPending;
         private static bool _suppressResultsView;
         private static bool _skipRequested;
@@ -28,7 +31,7 @@ namespace AutoContinuousPlay
                     return TimeSpan.Zero;
 
                 var remaining = TimeSpan.FromMinutes(PluginConfig.Instance.SessionMinutes) -
-                                (DateTime.UtcNow - _sessionStartedAt.Value);
+                                TimeSpan.FromSeconds(_activeElapsedSeconds);
                 return remaining > TimeSpan.Zero ? remaining : TimeSpan.Zero;
             }
         }
@@ -41,8 +44,13 @@ namespace AutoContinuousPlay
             if (!_sessionStartedAt.HasValue)
             {
                 _sessionStartedAt = DateTime.UtcNow;
+                _activeElapsedSeconds = 0d;
                 Plugin.Log.Info($"Continuous session started ({PluginConfig.Instance.SessionMinutes} minutes, {PluginConfig.Instance.ParsedDifficulty}).");
             }
+
+            // StartLevel is called before the gameplay scene finishes loading.
+            // The clock resumes only after MarkGameplayReady receives the scene event.
+            _gameplayClockRunning = false;
 
             try
             {
@@ -63,6 +71,7 @@ namespace AutoContinuousPlay
 
         internal static void PrepareLevelFinished(LevelCompletionResults results)
         {
+            _gameplayClockRunning = false;
             _suppressResultsView =
                 PluginConfig.Instance.Enabled &&
                 _sessionStartedAt.HasValue &&
@@ -96,6 +105,7 @@ namespace AutoContinuousPlay
                 if (returnMethod == null)
                     throw new MissingMethodException(returnController.GetType().FullName, "ReturnToMenu");
                 returnMethod.Invoke(returnController, null);
+                _gameplayClockRunning = false;
             }
             catch (Exception ex)
             {
@@ -137,7 +147,7 @@ namespace AutoContinuousPlay
             if (results.levelEndAction == LevelCompletionResults.LevelEndAction.Restart)
                 return;
 
-            if ((DateTime.UtcNow - _sessionStartedAt.Value).TotalMinutes >= PluginConfig.Instance.SessionMinutes)
+            if (RemainingTime <= TimeSpan.Zero)
             {
                 Stop("configured session time elapsed");
                 return;
@@ -180,6 +190,47 @@ namespace AutoContinuousPlay
             }
 
             _transitionPending = false;
+        }
+
+        internal static void MarkGameplayReady()
+        {
+            if (PluginConfig.Instance.Enabled && _sessionStartedAt.HasValue && !_transitionPending)
+            {
+                _gameplayClockRunning = true;
+                _gameTimeWasRunning = false;
+            }
+        }
+
+        internal static void MarkGameplayNotReady()
+        {
+            _gameplayClockRunning = false;
+            _gameTimeWasRunning = false;
+        }
+
+        internal static void AdvanceSessionClock(float unscaledDeltaSeconds, bool gameTimeIsRunning)
+        {
+            if (!_gameplayClockRunning || !_sessionStartedAt.HasValue)
+            {
+                _gameTimeWasRunning = false;
+                return;
+            }
+
+            if (!gameTimeIsRunning)
+            {
+                _gameTimeWasRunning = false;
+                return;
+            }
+
+            // Ignore the first frame after loading or resuming. Its unscaled delta can
+            // include time spent outside active gameplay on some Unity versions.
+            if (!_gameTimeWasRunning)
+            {
+                _gameTimeWasRunning = true;
+                return;
+            }
+
+            if (unscaledDeltaSeconds > 0f)
+                _activeElapsedSeconds += unscaledDeltaSeconds;
         }
 
         private static IEnumerator PlayNextAfterDelay(SoloFreePlayFlowCoordinator flow)
@@ -326,6 +377,9 @@ namespace AutoContinuousPlay
         internal static void Reset()
         {
             _sessionStartedAt = null;
+            _activeElapsedSeconds = 0d;
+            _gameplayClockRunning = false;
+            _gameTimeWasRunning = false;
             _transitionPending = false;
             _suppressResultsView = false;
             _skipRequested = false;

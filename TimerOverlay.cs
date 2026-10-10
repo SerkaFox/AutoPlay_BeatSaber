@@ -45,12 +45,14 @@ namespace AutoContinuousPlay
 
         private static void HandleGameSceneLoaded()
         {
+            SessionController.MarkGameplayReady();
             if (SessionController.IsSessionActive)
                 _behaviour?.Show();
         }
 
         private static void HandleMenuSceneActive()
         {
+            SessionController.MarkGameplayNotReady();
             _behaviour?.Hide();
         }
     }
@@ -111,6 +113,7 @@ namespace AutoContinuousPlay
 
         private void Update()
         {
+            SessionController.AdvanceSessionClock(Time.unscaledDeltaTime, Time.timeScale > 0f);
             UpdateText();
         }
 

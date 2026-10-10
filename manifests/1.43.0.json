@@ -3,7 +3,7 @@
   "id": "AutoContinuousPlay",
   "name": "AutoPlay Beat Saber",
   "author": "SerkaFox",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "Automatically plays random local songs back-to-back for a configurable session.",
   "gameVersion": "1.43.0",
   "icon": "AutoContinuousPlay.Assets.icon.png",

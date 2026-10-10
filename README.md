@@ -3,7 +3,7 @@
 AutoPlay Beat Saber is a BSIPA plugin that keeps a Solo session moving without
 requiring the player to select every song manually.
 
-The 0.4.1 source builds against Beat Saber 1.39.1, 1.40.7, 1.40.8, 1.43.0,
+The 0.4.2 source builds against Beat Saber 1.39.1, 1.40.7, 1.40.8, 1.43.0,
 and 1.44.1. Equivalent compatibility builds were manually exercised in VR.
 See [COMPATIBILITY.md](COMPATIBILITY.md) for the detailed results and known
 limitations.
@@ -15,11 +15,11 @@ Do not install a ZIP built for a different game version.
 
 | Beat Saber version | Plugin release | Release asset |
 | --- | --- | --- |
-| 1.39.1 | v0.4.1 | `AutoPlay-Beat-Saber-v0.4.1-bs1.39.1.zip` |
-| 1.40.7 | v0.4.1 | `AutoPlay-Beat-Saber-v0.4.1-bs1.40.7.zip` |
-| 1.40.8 | v0.4.1 | `AutoPlay-Beat-Saber-v0.4.1-bs1.40.8.zip` |
-| 1.43.0 | v0.4.1 | `AutoPlay-Beat-Saber-v0.4.1-bs1.43.0.zip` |
-| 1.44.1 | v0.4.1 | `AutoPlay-Beat-Saber-v0.4.1-bs1.44.1.zip` |
+| 1.39.1 | v0.4.2 | `AutoPlay-Beat-Saber-v0.4.2-bs1.39.1.zip` |
+| 1.40.7 | v0.4.2 | `AutoPlay-Beat-Saber-v0.4.2-bs1.40.7.zip` |
+| 1.40.8 | v0.4.2 | `AutoPlay-Beat-Saber-v0.4.2-bs1.40.8.zip` |
+| 1.43.0 | v0.4.2 | `AutoPlay-Beat-Saber-v0.4.2-bs1.43.0.zip` |
+| 1.44.1 | v0.4.2 | `AutoPlay-Beat-Saber-v0.4.2-bs1.44.1.zip` |
 | 1.44.2 | Unsupported | No compatible official BSIPA release is available. |
 
 The older `v0.4.0` release asset
@@ -34,6 +34,7 @@ The older `v0.4.0` release asset
 - Optionally restarts the current map after a failure.
 - Avoids the ten most recently played or skipped maps.
 - Adds a session countdown below SimpleClock.
+- Counts only active gameplay time; pauses and loading screens do not consume the session.
 - Adds a Skip button to the in-game pause menu.
 - Keeps the normal Menu button available to end the session.
 - Provides an in-game interface in English, Russian, and Spanish.
